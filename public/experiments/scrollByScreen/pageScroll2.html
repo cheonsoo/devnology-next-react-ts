@@ -1,0 +1,118 @@
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <style>
+      * {
+        margin:0px;
+        padding:0px;
+      }
+
+      #navigation{
+          position: fixed;
+          top: 0px;
+          left: 0px;
+          height: 80px;
+          width: 100%;
+          /* background: rgb(34, 69, 185); */
+          text-align: center;
+          font-size: 14px;
+          opacity: 0.5;
+      }
+      #navigation ul { list-style: none; margin-top: 50px; }
+      #navigation li { display: inline; margin-right: 10px; }
+      #navigation li a { text-decoration: none; color: #FFF;}
+      #navigation li a:hover {color: #0F0;}
+
+      #wrap { width: 100%; margin: 0 auto; margin-top: 80px; }
+      #SALMON{ background: salmon; height: 100%; }
+      #ROYALBLUE{ background: RoyalBlue; height: 100%; }
+      #GOLD{ background: Gold; height: 100%; }
+      #BLACK{ background: black; height: 100%; }
+    </style>
+
+    <script>
+      const pages = ["#SALMON", "#ROYALBLUE", "#GOLD", "#BLACK"];
+      let currentHref = "#SALMON";
+      let destHref = "";
+      const speed = 700;    // 스크롤 스피드 수치로 사용할 변수
+      const sizeOfTopMenu = 80;
+      const pageHeight = window.innerHeight;
+      let pozTop = 0;
+      let timeout;
+      let scrollPoz = 0;
+
+      function init() {
+        console.log("### INIT");
+        document.querySelector("#wrap").style.height = pageHeight;
+
+        // addEvent();
+
+        addScrollEvent();
+      }
+
+      //로직
+      // function scrolling(obj) {
+      //   console.log(obj);
+      //   if (!obj) {  // 예외처리, 현재는 기능적으로 필요한 부분은 아님, 관례적 사용
+      //       $('html, body').animate({ scrollTop: 0 }, speed);
+      //   } else {
+      //       posTop = $(obj).offset().top - sizeOfTopMenu;   // posTop = 매개변수로 들어온 컨텐츠 obj 의 offset().top - 네비게이션 높이
+      //       $('html, body').animate({ scrollTop: posTop }, speed); // body의 스크롤이동 : posTop
+      //   }
+      // };
+
+      // function addEvent() {
+      //   $("ul li a").click(function() {  // 네비게이션 클릭시
+      //     console.log("### Click");
+      //     var direction = $(this).attr("href");   // direction = 클릭한 요소의 href 속성
+      //     scrolling(direction); // direction 을 인자로 함수 실행
+      //     return false;   // 본래 이벤트 방지
+      //   });
+      // }
+
+      function addScrollEvent() {
+        function move(event) {
+          clearTimeout(timeout);
+
+          timeout = setTimeout(function() {
+            destHref = pages[pages.indexOf(currentHref) + 1];
+
+            if (destHref) {
+              // location.href = destHref;
+              console.log("###");
+              const body = document.body;
+              // body.style.transform = "translate3d(0px, 1000px, 0px)";
+              // body.style.transition = "all 1000ms ease 0s";
+            }
+
+            currentHref = destHref; // next href
+          }, 300);
+        }
+
+        document.addEventListener("scroll", move);
+      }
+
+      window.onload = () => {
+        init();
+      };
+    </script>
+  </head>
+
+  <body>
+    <div id="navigation">
+      <ul>
+        <li><a href="#SALMON"> SALMON </a> </li>
+        <li><a href="#ROYALBLUE"> ROYALBLUE </a> </li>
+        <li><a href="#GOLD"> GOLD </a> </li>
+        <li><a href="#BLACK"> BLACK </a> </li>
+      </ul>
+    </div>
+
+    <div id="wrap">
+      <div id="SALMON"></div>
+      <div id="ROYALBLUE"></div>
+      <div id="GOLD"></div>
+      <div id="BLACK"></div>
+    </div>
+  </body>
+</html>

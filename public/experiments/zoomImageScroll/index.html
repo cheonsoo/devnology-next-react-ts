@@ -1,0 +1,133 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
+  <meta name="apple-mobile-web-app-title" content="CodePen">
+  <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+  <link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111">
+
+  <title>ZoomImageScroll</title>
+
+  <style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    background:#1e0f21;
+  }
+  header {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+  footer {
+    position: relative;
+    width: 100%;
+    height: 1000px;
+    overflow: hidden;
+  }
+  .inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(./night-sky-g1f3262fbb_1920.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+  .footer-inner {
+    width: 100%;
+    height: 1000px;
+    background-image: url(./church-g00bcdbd0a_1920.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+  /* #header-front {
+    top: 25.3125vw;
+    left: calc(52.65% - 65.98958333333333vw / 2);
+    width: 65.98958vw;
+    position: absolute;
+    z-index: 3;
+    height: auto;
+  } */
+  .section-logo {
+    width: 100%;
+    height: 500px;
+    position: absolute;
+    top: 0;
+  }
+  .section-logo .main-logo {
+    color: #dddddd; /* #2C88CC */
+    position: absolute;
+    top: 200px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-size: 100px;
+  }
+  .section-content {
+    width: 100%;
+    height: 500px;
+    color: #ffffff;
+    font-size: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  </style>
+
+  <script>
+    if (document.location.search.match(/type=embed/gi)) {
+      window.parent.postMessage("resize", "*");
+    }
+  </script>
+</head>
+
+<body translate="no">
+  <header>
+    <div class="inner" style="transform: scale(1);"></div>
+  </header>
+
+  <section class="section-logo">
+    <div class="main-logo">
+      <h3>DEVNOLOGY</h1>
+    </div>
+  </section>
+
+  <section class="section-content">
+    <div>
+      <h3>세상의 모든 얕은 지식</h1>
+    </div>
+  </section>
+
+  <section class="section-content">
+    <div>
+      <h3>시작합니다</h1>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner" style="transform: scale(2.5)"></div>
+  </footer>
+
+  <script id="rendered-js">
+    const inner = document.querySelector(".inner");
+    const footerInner = document.querySelector(".footer-inner");
+    const offset = window.document.body.scrollHeight / 2;
+
+    window.addEventListener("scroll", function() {
+      const valueForHeader = window.pageYOffset / offset + 1;
+      const valueForFooter = (3.5 - valueForHeader) > 1 ? 3.5 - valueForHeader : 1;
+
+      inner.style.transform = `scale(${valueForHeader})`;
+      footerInner.style.transform = `scale(${valueForFooter})`;
+    });
+  </script>
+</body>
+</html>

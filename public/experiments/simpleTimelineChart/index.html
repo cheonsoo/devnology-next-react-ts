@@ -1,0 +1,223 @@
+<html>
+<head>
+  <!-- <link rel="stylesheet" type="text/css" href="timeline.css"> -->
+  <style>
+    .canvas-container {
+      /* padding: 20px;
+      margin: 20px; */
+      width: 100%;
+      height: 500px;
+    }
+    #timeline {
+      background-color : rgb(202, 217, 219);
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      /* width: 500px;
+      height: 500px; */
+      /* image-rendering: pixelated; */
+      /* image-rendering: crisp-edges; */
+    }
+    #crossHair {
+      background-color: transparent;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border: 1px solid gray;
+    }
+    #tooltip {
+      width: 100px;
+      /* height: 100px; */
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 8px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: none;
+      padding: 10px 15px;
+      color: #eeeeee;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas-container">
+    <canvas id='timeline' width="1000" height="500"></canvas>
+    <canvas id='crossHair' width="1000" height="500"></canvas>
+    <div id="tooltip">
+      <div id="xPoz">
+        x: <span />
+      </div>
+      <div id="yPoz">
+        y: <span />
+      </div>
+    </div>
+  </div>
+
+  <div id="status"></div><br>
+  <div id="color" style="width:30px;height:30px;"></div>
+
+  <script>
+    let TIMER;
+
+    (function() {
+      const bulletGap = 30;
+      const data = [];
+      for (let i=1; i<=30; i++) {
+        data.push({
+          x: i * bulletGap,
+          y: parseInt(Math.random() * 9 + 1) * bulletGap
+        });
+      }
+      const timeline = document.querySelector("#timeLine");
+      const ctx = timeline.getContext('2d');
+      ctx.imageSmoothingEnabled = true;
+      ctx.lineWidth = 5;
+      ctx.strokeStyle = "#3996FA";
+      // ctx.translate(0.5, 0.5);
+
+      const crossHair = document.querySelector("#crossHair");
+      const ctx2 = crossHair.getContext('2d');
+      ctx2.imageSmoothingEnabled = true;
+      ctx2.lineWidth = 1;
+      ctx2.strokeStyle = "gray";
+      // ctx2.translate(0.5, 0.5);
+
+      const xZero = 0;
+      const yZero = timeline.height;
+      let prevCrossHairPoz = { x: 0, y: 0 };
+
+      function rgbToHex(r, g, b) {
+        if (r > 255 || g > 255 || b > 255)
+          throw "Invalid color component";
+        return ((r << 16) | (g << 8) | b).toString(16);
+      }
+
+      function drawDot(xPoz, yPoz) {
+        const x = xPoz;
+        const y = yZero - yPoz;
+        const radius = 1;
+        const startAngle = 0;
+        const endAngle = Math.PI * 2;
+        const counterClockWise = false;
+
+        ctx.beginPath();
+        ctx.arc(x, y, radius, startAngle, endAngle, counterClockWise); // x, y, radius, startAngle, endAngle, counterClockWise
+        ctx.fill();
+        ctx.stroke();
+      }
+
+      function drawLine(from, to) {
+        ctx.moveTo(from.x, yZero - from.y);
+        ctx.bezierCurveTo((from.x + to.x) / 2, yZero - from.y, (from.x + to.x) / 2, yZero - to.y, to.x, yZero - to.y); // Draw from xPoz, yPoz
+        // ctx.bezierCurveTo((from.x + to.x) / 2, from.y, (from.x + to.x) / 2, to.y, to.x, to.y); // Draw from top
+        ctx.stroke();
+        ctx.closePath();
+      }
+
+      function drawAxis() {
+        ctx.beginPath();
+
+        ctx.moveTo(0, 0);
+        ctx.lineTo(0, timeline.width);
+
+        ctx.moveTo(0, 0);
+        ctx.lineTo(timeline.height, 0);
+
+        ctx.stroke();
+        ctx.closePath();
+      }
+
+      function drawGraph() {
+        for (let i=0; i<data.length; i++) {
+          const item = data[i];
+          drawDot(item.x, item.y);
+
+          if (i < data.length - 1) {
+            drawLine(data[i], data[i + 1]);
+          }
+        }
+      }
+
+      function clearPrevCrossHair() {
+        ctx2.clearRect(0, 0, crossHair.width, crossHair.height);
+      }
+
+      function hideTooltip() {
+        const elToolTip = document.querySelector("#tooltip");
+        elToolTip.style.display = "none";
+        elToolTip.style.top = 0;
+        elToolTip.style.left = 0;
+      }
+
+      function addEventClearCanvas() {
+        crossHair.addEventListener("mouseout", clearPrevCrossHair);
+      }
+
+      function showToolTip(event) {
+        const gap = 10;
+        const elToolTip = document.querySelector("#tooltip");
+        const elXPoz = elToolTip.querySelector("#xPoz > span");
+        const elYPoz = elToolTip.querySelector("#yPoz > span");
+        elXPoz.innerText = event.x;
+        elYPoz.innerText = event.y;
+
+        elToolTip.style.display = "block";
+        elToolTip.style.top = event.y;
+        elToolTip.style.left = event.x + gap;
+      }
+
+      function addEventDrawCrossHair() {
+        function drawCrossHair(event) {
+          let coord = "x=" + event.x + ", y=" + event.y;
+          let p = ctx.getImageData(event.x, event.y, 1, 1).data;
+
+          if((p[0] == 0) && (p[1] == 0) && (p[2] == 0) && (p[3] == 0)){
+            coord += " (Transparent color detected, cannot be converted to HEX)";
+          }
+
+          let hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2])).slice(-6);
+
+          document.getElementById("status").innerHTML = `hex: ${hex}, coord: ${coord}`;
+          document.getElementById("color").style.backgroundColor = hex;
+
+          if (hex !== "#3996fa") {
+            clearPrevCrossHair();
+            hideTooltip();
+            return;
+          }
+
+          clearPrevCrossHair();
+
+          ctx2.beginPath();
+          ctx2.lineWidth = 1;
+          ctx2.strokeStyle = "#575757";
+          ctx2.moveTo(0, event.y);
+          ctx2.lineTo(event.x, event.y);
+          ctx2.moveTo(event.x, crossHair.height);
+          ctx2.lineTo(event.x, event.y);
+          ctx2.stroke();
+
+          showToolTip(event);
+        }
+
+        crossHair.addEventListener("mousemove", function(event) {
+          if (!TIMER) {
+            TIMER = setTimeout(() => {
+              TIMER = null;
+              drawCrossHair(event);
+            }, 20);
+          }
+        });
+      }
+
+      // INIT
+      drawAxis();
+      drawGraph();
+      addEventDrawCrossHair();
+      // addEventClearCanvas();
+    })();
+  </script>
+</body>
+</html>

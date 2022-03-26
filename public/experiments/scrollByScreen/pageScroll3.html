@@ -1,0 +1,125 @@
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <style>
+      * {
+        margin:0px;
+        padding:0px;
+      }
+
+      #navigation{
+          position: fixed;
+          top: 0px;
+          left: 0px;
+          height: 80px;
+          width: 100%;
+          /* background: rgb(34, 69, 185); */
+          text-align: center;
+          font-size: 14px;
+          opacity: 0.5;
+      }
+      #navigation ul {
+        list-style: none;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #navigation li { display: flex; align-items: center; justify-content: center; width: 100px; height: 100%; margin-right: 10px; }
+      #navigation li a { font-weight: bold; text-decoration: none; color: #000;}
+      #navigation li a:hover {color: #0F0;}
+
+      .container {
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+        margin-top: 0px;
+        position: relative;
+        touch-action: none;
+        transform: translate3d(0px, 0px, 0px);
+        transition: all 1000ms ease 0s;
+        display: block;
+      }
+      .container-item {
+        display: table;
+        table-layout: fixed;
+        width: 100%;
+        height: 1306px;
+        position: relative;
+      }
+      #page1 { background: salmon; height: 100%; }
+      #page2 { background: RoyalBlue; height: 100%; }
+      #page3 { background: Gold; height: 100%; }
+      #page4 { background: gray; height: 100%; }
+    </style>
+
+    <script>
+      let currentPage = 0;
+      const pages = ["#SALMON", "#ROYALBLUE", "#GOLD", "#BLACK"];
+      let currentHref = "#SALMON";
+      let destHref = "";
+      const speed = 700;    // 스크롤 스피드 수치로 사용할 변수
+      const sizeOfTopMenu = 80;
+      const pageHeight = window.innerHeight;
+      console.log(`### pageHeight: ${pageHeight}`);
+      let pozTop = 0;
+      let timeout;
+      let scrollPoz = 0;
+
+      function init() {
+        console.log("### INIT");
+        addScrollEvent();
+      }
+
+      function addScrollEvent() {
+        function move(event) {
+          clearTimeout(timeout);
+
+          timeout = setTimeout(function() {
+            const container = document.querySelector(".container");
+            const currentScrollPoz = window.pageYOffset + window.innerHeight;
+            let direction = "";
+            if (scrollPoz > currentScrollPoz) direction = "up";
+            else if (scrollPoz < currentScrollPoz) direction = "down";
+
+            console.log(`### direction: ${direction}, pageHeight: ${pageHeight}, currentPage: ${currentPage}`);
+
+            if (direction === "down") {
+              console.log("### going down");
+              // ++currentPage;
+              container.style.transform = `translate3d(0px, -${pageHeight}px, 0px)`;
+            } else if (direction === "up") {
+              console.log("### going up");
+              // --currentPage;
+              container.style.transform = `translate3d(0px, ${pageHeight}px, 0px)`;
+            }
+          }, 100);
+        }
+
+        document.addEventListener("scroll", move);
+      }
+
+      window.onload = () => {
+        init();
+      };
+    </script>
+  </head>
+
+  <body>
+    <!-- <div id="navigation">
+      <ul>
+        <li><a href="#SALMON"> SALMON </a> </li>
+        <li><a href="#ROYALBLUE"> ROYALBLUE </a> </li>
+        <li><a href="#GOLD"> GOLD </a> </li>
+        <li><a href="#BLACK"> BLACK </a> </li>
+      </ul>
+    </div> -->
+
+    <div class="container">
+      <div class="container-item" id="page1">PAGE1</div>
+      <div class="container-item" id="page2">PAGE2</div>
+      <div class="container-item" id="page3">PAGE3</div>
+      <div class="container-item" id="page4">PAGE4</div>
+    </div>
+  </body>
+</html>

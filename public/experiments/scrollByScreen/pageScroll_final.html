@@ -1,0 +1,153 @@
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <style>
+      * {
+        margin:0px;
+        padding:0px;
+      }
+
+      body {
+        overflow: hidden;
+        height: 100%;
+      }
+
+      #navigation{
+          position: fixed;
+          top: 0px;
+          left: 0px;
+          height: 80px;
+          width: 100%;
+          /* background: rgb(34, 69, 185); */
+          text-align: center;
+          font-size: 14px;
+          opacity: 0.5;
+      }
+      #navigation ul {
+        list-style: none;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #navigation li { display: flex; align-items: center; justify-content: center; width: 100px; height: 100%; margin-right: 10px; }
+      #navigation li a { font-weight: bold; text-decoration: none; color: #000;}
+      #navigation li a:hover {color: #0F0;}
+
+      .container {
+        width: 100%;
+        /* height: 100%; */
+        margin: 0 auto;
+        margin-top: 0px;
+        position: relative;
+        touch-action: none;
+        transform: translate3d(0px, 0px, 0px);
+        transition: all 1000ms ease 0s;
+        display: block;
+        overflow: hidden;
+      }
+      .container-item {
+        display: table;
+        table-layout: fixed;
+        width: 100%;
+        height: 1306px;
+        position: relative;
+      }
+      #page1, #page2, #page3, #page4 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #page1 { background: salmon; height: 100%; }
+      #page2 { background: RoyalBlue; height: 100%; }
+      #page3 { background: Gold; height: 100%; }
+      #page4 { background: gray; height: 100%; }
+
+      .container-item-header {
+        width: 100%;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 48px;
+        font-weight: bold;
+      }
+    </style>
+
+    <script>
+      const totalPage = 4;
+      const pageHeight = window.innerHeight;
+      let currentScrollPoz = 0;
+
+      function init() {
+        addScrollEvent();
+      }
+
+      function addScrollEvent() {
+        function move(event) {
+          // To prevent multiple event, remove event and add it again after animation finished
+          document.removeEventListener("wheel", move);
+          setTimeout(function() {
+            document.addEventListener("wheel", move);
+          }, 1000)
+
+          const container = document.querySelector(".container");
+          let direction = event.deltaY > 0 ? "down" : "up";
+
+          if (direction === "down") {
+            if (currentScrollPoz === pageHeight * (totalPage - 1)) {
+              console.log("### Hit Bottom");
+              return;
+            }
+
+            currentScrollPoz += pageHeight;
+            container.style.transform = `translate3d(0px, -${currentScrollPoz}px, 0px)`;
+          } else if (direction === "up") {
+            if (currentScrollPoz === 0) {
+              console.log("### Hit Top");
+              return;
+            }
+
+            currentScrollPoz -= pageHeight;
+            container.style.transform = `translate3d(0px, -${currentScrollPoz}px, 0px)`;
+          }
+
+          console.log(`### direction: ${direction}, currentScrollPoz: ${currentScrollPoz}, pageHeight: ${pageHeight}`);
+        }
+
+        document.addEventListener("wheel", move);
+      }
+
+      window.onload = () => {
+        init();
+      };
+    </script>
+  </head>
+
+  <body>
+    <!-- <div id="navigation">
+      <ul>
+        <li><a href="#SALMON"> SALMON </a> </li>
+        <li><a href="#ROYALBLUE"> ROYALBLUE </a> </li>
+        <li><a href="#GOLD"> GOLD </a> </li>
+        <li><a href="#BLACK"> BLACK </a> </li>
+      </ul>
+    </div> -->
+
+    <div class="container">
+      <div class="container-item" id="page1">
+        <div class="container-item-header">PAGE1</div>
+      </div>
+      <div class="container-item" id="page2">
+        <div class="container-item-header">PAGE2</div>
+      </div>
+      <div class="container-item" id="page3">
+        <div class="container-item-header">PAGE3</div>
+      </div>
+      <div class="container-item" id="page4">
+        <div class="container-item-header">PAGE4</div>
+      </div>
+    </div>
+  </body>
+</html>

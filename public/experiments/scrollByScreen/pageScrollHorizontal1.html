@@ -1,0 +1,179 @@
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <style>
+      * {
+        margin:0px;
+        padding:0px;
+        font-family: arial,helvetica;
+      }
+
+      body {
+        overflow: hidden;
+        height: 100%;
+      }
+
+      /* Navigation */
+      #navigation{
+          position: fixed;
+          top: 0px;
+          left: 0px;
+          height: 80px;
+          width: 100%;
+          text-align: center;
+          font-size: 14px;
+          opacity: 0.5;
+          z-index: 1;
+      }
+      #navigation ul {
+        list-style: none;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #navigation li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 150px;
+        height: 100%;
+        margin-right: 10px;
+      }
+      #navigation li a {
+        font-size: 20px;
+        font-weight: bold;
+        text-decoration: none;
+        color: #fff;
+        cursor: pointer;
+      }
+      #navigation li a:hover {
+        color: rgb(84, 100, 192);
+      }
+      /* Navigation */
+
+      /* Container */
+      .container {
+        /* width: 100%; */
+        height: 1306px;
+        margin: 0 auto;
+        margin-top: 0px;
+        position: relative;
+        touch-action: none;
+        transform: translate3d(0px, 0px, 0px);
+        transition: all 1000ms ease 0s;
+        display: flex;
+        /* overflow: hidden; */
+      }
+      .container-item {
+        display: table;
+        table-layout: fixed;
+        width: 100%;
+        height: 1306px;
+        position: relative;
+      }
+      #page1, #page2, #page3, #page4 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #page1 { width: 786px; height: 100%; background: rgb(209, 117, 106); }
+      #page2 { width: 786px; height: 100%; background: rgb(75, 106, 201); }
+      #page3 { width: 786px; height: 100%; background: rgb(185, 174, 111); }
+      #page4 { width: 786px; height: 100%; background: rgb(188, 105, 190); }
+
+      .container-item-header {
+        width: 100%;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 48px;
+        font-weight: bold;
+      }
+      /* Container */
+    </style>
+
+    <script>
+      const totalPage = 4;
+      const pageWidth = window.innerWidth;
+      const pageHeight = window.innerHeight;
+      let currentScrollPoz = 0;
+
+      function init() {
+        const container = document.querySelector(".container");
+        const containerItems = container.querySelectorAll(".container-item");
+        Array.from(containerItems).forEach(item => item.style.width = pageWidth * pageWidth);
+        console.log(`### pageWidth: ${pageWidth}, pageHeight: ${pageHeight}`);
+        container.style.width = pageWidth * totalPage;
+        addScrollEvent();
+      }
+
+      function addScrollEvent() {
+        function move(event) {
+          // To prevent multiple event, remove event and add it again after animation finished
+          document.removeEventListener("wheel", move);
+          setTimeout(function() {
+            document.addEventListener("wheel", move);
+          }, 1000)
+
+          const container = document.querySelector(".container");
+          let direction = event.deltaX > 0 ? "right" : "left";
+
+          if (direction === "right") {
+            if (currentScrollPoz === pageWidth * (totalPage - 1)) {
+              console.log("### Hit Right");
+              return;
+            }
+
+            currentScrollPoz += pageWidth;
+            container.style.transform = `translate3d(-${currentScrollPoz}px, 0px, 0px)`;
+          } else if (direction === "left") {
+            if (currentScrollPoz === 0) {
+              console.log("### Hit Left");
+              return;
+            }
+
+            currentScrollPoz -= pageWidth;
+            container.style.transform = `translate3d(-${currentScrollPoz}px, 0px, 0px)`;
+          }
+
+          console.log(`### direction: ${direction}, currentScrollPoz: ${currentScrollPoz}, pageHeight: ${pageHeight}`);
+        }
+
+        document.addEventListener("wheel", move);
+      }
+
+      window.onload = () => {
+        init();
+      };
+    </script>
+  </head>
+
+  <body>
+    <div id="navigation">
+      <ul>
+        <li><a href="#page1">PAGE1</a></li>
+        <li><a href="#page2">PAGE2</a></li>
+        <li><a href="#page3">PAGE3</a></li>
+        <li><a href="#page4">PAGE4</a></li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-item" id="page1">
+        <div class="container-item-header">PAGE1</div>
+      </div>
+      <div class="container-item" id="page2">
+        <div class="container-item-header">PAGE2</div>
+      </div>
+      <div class="container-item" id="page3">
+        <div class="container-item-header">PAGE3</div>
+      </div>
+      <div class="container-item" id="page4">
+        <div class="container-item-header">PAGE4</div>
+      </div>
+    </div>
+  </body>
+</html>

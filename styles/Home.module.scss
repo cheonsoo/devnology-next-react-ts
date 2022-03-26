@@ -1,0 +1,40 @@
+.home_container {
+  width: 100%;
+  height: 100%;
+
+  :global .banner_img {
+    width: 100%;
+    height: 500px;
+
+    > span {
+      width: 100% !important;
+      height: 100% !important;
+
+      img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: fill;
+      }
+    }
+  }
+  :global .text {
+    color: #000;
+    font-size: 36px;
+    font-weight: 900;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+  }
+}
+
+.header_text {
+  position: relative;
+  top: -300px;
+  color: #fff;
+  font-size: 50px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  font-weight: 900;
+}

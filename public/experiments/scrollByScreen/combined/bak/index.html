@@ -1,0 +1,73 @@
+<html>
+  <head>
+    <link href="./style.css" rel="stylesheet">
+    <script src="./script.js"></script>
+  </head>
+
+  <body>
+    <div id="navigation">
+      <ul>
+        <li><a href="#page1">PAGE1</a></li>
+        <li><a href="#page2">PAGE2</a></li>
+        <li><a href="#page3">PAGE3</a></li>
+        <li><a href="#page4">PAGE4</a></li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-item" id="page1">
+        <div class="container-item-horizontal">
+          <div class="btn-area">
+            <button class="my-arrow left" onClick="handleLeft()">
+              <svg width="60px" height="80px" viewBox="0 0 50 80" xml:space="preserve">
+                <polyline fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" points="45.63,75.8 0.375,38.087 45.63,0.375 ">
+                </polyline>
+              </svg>
+            </button>
+            <button class="my-arrow right" onClick="handleRight()">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60px" height="80px" viewBox="0 0 50 80" xml:space="preserve">
+                <polyline fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" points="0.375,0.375 45.63,38.087 0.375,75.8 ">
+                </polyline>
+              </svg>
+            </button>
+          </div>
+
+          <div class="container-item-horizontal-container">
+            <div class="container-item-horizontal-header">
+              <div class="content" id="page1-1">
+                PAGE1-1
+              </div>
+            </div>
+            <div class="container-item-horizontal-header">
+              <div class="content" id="page1-2">
+                PAGE1-2
+              </div>
+            </div>
+            <div class="container-item-horizontal-header">
+              <div class="content" id="page1-3">
+                PAGE1-3
+              </div>
+            </div>
+            <div class="container-item-horizontal-header">
+              <div class="content" id="page1-4">
+                PAGE1-4
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-item" id="page2">
+        <div class="container-item-header">PAGE2</div>
+      </div>
+
+      <div class="container-item" id="page3">
+        <div class="container-item-header">PAGE3</div>
+      </div>
+
+      <div class="container-item" id="page4">
+        <div class="container-item-header">PAGE4</div>
+      </div>
+    </div>
+  </body>
+</html>
