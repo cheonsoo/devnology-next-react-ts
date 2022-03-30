@@ -11,13 +11,22 @@ const nextConfig = {
         use: "raw-loader"
       }
     );
+
+    config.resolve.fallback = {
+      fs: false,
+      crypto: false
+    };
+
     return config;
   }
-  // ,
-  // images: {
-  //   loader: 'imgix',
-  //   domains: ['media.bunjang.co.kr']
-  // }
+  ,
+  images: {
+    domains: [
+      'cafeptthumb-phinf.pstatic.net',
+      'media.bunjang.co.kr',
+      'dnvefa72aowie.cloudfront.net',
+    ]
+  }
 }
 
 module.exports = nextConfig;

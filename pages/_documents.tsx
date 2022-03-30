@@ -16,7 +16,10 @@ export default class MyDocument extends Document {
   }
 }
 
-MyDocument.getInitialProps = async ctx => {
+MyDocument.getInitialProps = async ({ ctx, isServer}) => {
+  console.log(ctx);
+  console.log(isServer);
+
   const materialSheets = new ServerStyleSheets();
   const originalRenderPage = ctx.renderPage;
 

@@ -1,11 +1,14 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "rootDir": ".",
     "paths": {
       "@/*": [ "*" ]
     },
     "target": "es5",
     "lib": [
+      "es6",
+      "es2015.promise",
       "dom",
       "dom.iterable",
       "esnext"
@@ -26,8 +29,7 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx",
-    "src"
+    "**/*.tsx"
   ],
   "exclude": [
     "node_modules"

@@ -3,9 +3,10 @@ import { useRouter } from 'next/router';
 import styles from '@/styles/Layout.module.scss';
 
 const menus = [
-  { path: '/', label: 'devnology' },
-  { path: '/posts', label: 'posts' },
-  { path: '/experiments', label: 'experiments' },
+  { path: '/', label: 'devnology |' },
+  { path: '/posts', label: 'posts |' },
+  { path: '/experiments', label: 'experiments |' },
+  { path: '/allmarkets', label: '장터검색 |' },
   { path: '/about', label: 'about' }
 ];
 

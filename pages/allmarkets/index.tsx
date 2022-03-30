@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import type { NextPage } from 'next';
+import Image from 'next/image'
 import { useRouter } from 'next/router';
 import { styled } from '@mui/material/styles';
-import axios from 'axios';
 
-import Image from "next/image";
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
@@ -14,10 +14,11 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import TablePagination from '@mui/material/TablePagination';
 
-import withLayout from '../../components/layouts';
+import withLayout from '@/components/layouts';
 
-import { posts } from '../../constants';
+import { posts } from '@/constants';
 
 import styles from '@/styles/AllMarkets.module.scss';
 
@@ -25,7 +26,8 @@ let timer: any;
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
+    // backgroundColor: theme.palette.common.black,
+    backgroundColor: '#55aacc',
     color: theme.palette.common.white,
   },
   [`&.${tableCellClasses.body}`]: {
@@ -46,6 +48,9 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 const Posts: NextPage = () => {
   const [keyword, setKeyword] = useState('');
   const [data, setData] = useState<Object[]>([]);
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+
   const router = useRouter();
 
   useEffect(() => {
@@ -79,11 +84,18 @@ const Posts: NextPage = () => {
 
   const handleSearch = async () => {
     console.log(`keyword: ${keyword}`);
+    setPage(0);
     setData([]);
 
-    const list1 = await getBunjangList(keyword);
-    const list2 = await getJoongnaList(keyword);
-    setData(list1.concat(list2));
+    const list1 = await getNaverCafeList(keyword);
+    console.log('### 중고나라: ', list1);
+    const list2 = await getBunjangList(keyword);
+    console.log('### 번개장터', list2);
+    const list3 = await getDaangnList(keyword);
+    console.log('### 당근마켓', list3);
+
+    const allList = list1.concat(list2).concat(list3);
+    setData(allList);
   };
 
   const handleInfiniteScroll = () => {
@@ -91,85 +103,50 @@ const Posts: NextPage = () => {
   }
 
   const getBunjangList = async (keyword: string) => {
-    const url = `https://api.bunjang.co.kr/api/1/find_v2.json?q=${keyword}&order=score&page=0&request_id=2022324193240&stat_device=w&n=100&stat_category_required=1&req_ref=search&version=4`;
+    const url = `http://localhost:3000/api/scrapers/products/bunjang?keyword=${keyword}`;
     const res = await axios({
       method: 'GET',
       url
     });
-    const items = res.data.list;
-    console.log('### 번개장터', items);
-    const _data = items.map((item: any) => ({
-      id: item.pid,
-      title: item.name,
-      location: item.location,
-      prd_img: item.product_image,
-      tag: item.tag,
-      update_date: item.update_time,
-      price: item.price,
-      market: 'bunjang',
-      link: `https://m.bunjang.co.kr/products/${item.pid}`
-    }));
-    return _data;
+    return res.data.data;
   };
 
-  const getJoongnaList = async (keyword: string) => {
-    const url = `https://search-api.joongna.com/v25/search/product`;
+  const getNaverCafeList = async (keyword: string) => {
+    const url = `http://localhost:3000/api/scrapers/products/navercafe?keyword=${keyword}`;
     const res = await axios({
-      method: 'POST',
-      url,
-      data: {
-        "filter": {
-          "categoryDepth": 0,
-          "categorySeq": 0,
-          "dateFilterParameter": {
-              "sortEndDate": null,
-              "sortStartDate": null
-          },
-          "productCondition": -1,
-          "flawedYn": 0,
-          "fullPackageYn": 0,
-          "limitedEditionYn": 0,
-          "maxPrice": 2000000000,
-          "minPrice": 0,
-          "tradeType": 0
-        },
-        "page": 0,
-        "firstQuantity": 10,
-        "productFilter": "ALL",
-        "productStates": [
-            0,
-            1
-        ],
-        "quantity": 10,
-        "searchQuantity": 30,
-        "osType": 2,
-        "searchWord": keyword,
-        "sort": "RECENT_SORT",
-        "startIndex": 0,
-        "searchStartTime": "2022-03-25 02:19:06"
-      }
+      method: 'GET',
+      url
     });
-    const items = res.data.data.items;
-    console.log('### 중고나라', items);
-    const _data = items.map((item: any) => ({
-      id: item.articleSeq,
-      title: item.title,
-      location: '',
-      prd_img: `https://img2.joongna.com${item.url}`,
-      tag: '',
-      update_date: item.articleReqDate,
-      price: item.price,
-      market: 'joongna',
-      link: item.articleUrl
-    }));
-    return _data;
+    return res.data.data;
+  };
+
+  const getDaangnList = async (keyword: string) => {
+    const url = `http://localhost:3000/api/scrapers/products/daangn?keyword=${keyword}`;
+    const res = await axios({
+      method: 'GET',
+      url
+    });
+    return res.data.data;
+  }
+
+  const handleChangePage = (event: unknown, newPage: number) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
   };
 
   return (
     <div className={styles.all_markets_container}>
-      <div>
-        <TextField id="outlined-basic" label="Outlined" variant="outlined" onKeyUp={handleKeyUp} onChange={handleChange} />
-        <Button variant="contained" onClick={handleSearch}>Outlined</Button>
+      <div style={{ display: 'flex' }}>
+        <div style={{ marginRight: '10px' }}>
+          <TextField id="outlined-basic" label="Outlined" variant="outlined" onKeyUp={handleKeyUp} onChange={handleChange} />
+        </div>
+        <div>
+          <Button variant="contained" style={{ height: '55px' }} onClick={handleSearch}>검색</Button>
+        </div>
       </div>
 
       <div>
@@ -187,11 +164,11 @@ const Posts: NextPage = () => {
             </TableHead>
 
             <TableBody>
-              {data.map((item: any, idx: number) => (
+              {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((item: any, idx: number) => (
                 <StyledTableRow className='table_row' key={idx} onClick={() => handleClickLink(item)}>
                   <StyledTableCell className='table_cell' component="th" scope="row">
-                    {/* <div style={{ width: '100px', height: '100px' }}><Image alt='test' layout='fill' src={item.prd_img} /></div> */}
-                    <div><img style={{ height: '100px' }} src={item.prd_img} /></div>
+                    <div style={{ width: '250px' }}><Image alt='test' width='100%' height='100%' layout='responsive' objectFit='contain' src={item.prd_img} /></div>
+                    {/* <div><img style={{ height: '100px' }} src={item.prd_img} /></div> */}
                   </StyledTableCell>
                   <StyledTableCell className='table_cell' component="th" scope="row">{item.title}</StyledTableCell>
                   <StyledTableCell className='table_cell' component="th" scope="row">{item.price}</StyledTableCell>
@@ -203,6 +180,16 @@ const Posts: NextPage = () => {
             </TableBody>
           </Table>
         </TableContainer>
+
+        <TablePagination
+          rowsPerPageOptions={[10, 25, 50]}
+          component="div"
+          count={data.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
       </div>
     </div>
   );
