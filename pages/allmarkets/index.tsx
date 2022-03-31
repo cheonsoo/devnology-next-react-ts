@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import type { NextPage } from 'next';
 import Image from 'next/image'
-import { useRouter } from 'next/router';
-import { styled } from '@mui/material/styles';
 
+import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
@@ -15,10 +14,7 @@ import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import TablePagination from '@mui/material/TablePagination';
-
 import withLayout from '@/components/layouts';
-
-import { posts } from '@/constants';
 
 import styles from '@/styles/AllMarkets.module.scss';
 
@@ -50,8 +46,6 @@ const Posts: NextPage = () => {
   const [data, setData] = useState<Object[]>([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
-
-  const router = useRouter();
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
@@ -95,11 +89,11 @@ const Posts: NextPage = () => {
     console.log('### 당근마켓', list3);
 
     const allList = list1.concat(list2).concat(list3);
-    setData(allList);
+    setData(allList.sort((a: any, b: any) => (new Date(b.update_date).getTime() - new Date(a.update_date).getTime())));
   };
 
   const handleInfiniteScroll = () => {
-    console.log('handleInfiniteScroll');
+    // console.log('handleInfiniteScroll');
   }
 
   const getBunjangList = async (keyword: string) => {

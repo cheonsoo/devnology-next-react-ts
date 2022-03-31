@@ -33,7 +33,8 @@ export default async function handler(req: any, res: any) {
         price,
         market: '당근마켓',
         link,
-        tag: []
+        tag: [],
+        update_date: '2000-01-01 00:00',
       };
       data.push(model);
     });

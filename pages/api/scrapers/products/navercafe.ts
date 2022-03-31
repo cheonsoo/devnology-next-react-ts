@@ -1,4 +1,5 @@
 import axios from 'axios';
+import moment from 'moment';
 import IProduct from '@/types/IProduct';
 
 export default async function handler(req: any, res: any) {
@@ -27,7 +28,7 @@ export default async function handler(req: any, res: any) {
       location: getLocation(item.productSale.regionList),
       prd_img: item.thumbnailImageUrl,
       tag: [],
-      update_date: item.writeTime,
+      update_date: moment(item.writeTime).format('YYYY-MM-DD HH:MM'),
       price: item.productSale.cost,
       market: item.cafeName,
       link: `https://cafe.naver.com/${item.cafeUrl}/${item.articleId}`
