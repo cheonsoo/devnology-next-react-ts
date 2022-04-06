@@ -71,7 +71,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["node-sass", "npm:7.0.1"],\
             ["prettier", "npm:2.6.0"],\
             ["process", "npm:0.11.10"],\
-            ["puppeteer", "npm:13.5.1"],\
+            ["puppeteer", "npm:13.5.2"],\
             ["puppeteer-core", "npm:13.5.1"],\
             ["querystring", "npm:0.2.1"],\
             ["raw-loader", "virtual:adda991b8b33866d32b99ef37f17ebd83471a574cd0fd955565ea858d80760e34e0df83199aca4c8ccffdad9333d70070c697db40c9ff8fdb02b4d10c638e03a#npm:4.0.2"],\
@@ -5398,7 +5398,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["node-sass", "npm:7.0.1"],\
             ["prettier", "npm:2.6.0"],\
             ["process", "npm:0.11.10"],\
-            ["puppeteer", "npm:13.5.1"],\
+            ["puppeteer", "npm:13.5.2"],\
             ["puppeteer-core", "npm:13.5.1"],\
             ["querystring", "npm:0.2.1"],\
             ["raw-loader", "virtual:adda991b8b33866d32b99ef37f17ebd83471a574cd0fd955565ea858d80760e34e0df83199aca4c8ccffdad9333d70070c697db40c9ff8fdb02b4d10c638e03a#npm:4.0.2"],\
@@ -9705,12 +9705,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["puppeteer", [\
-        ["npm:13.5.1", {\
-          "packageLocation": "./.yarn/unplugged/puppeteer-npm-13.5.1-231e586c7a/node_modules/puppeteer/",\
+        ["npm:13.5.2", {\
+          "packageLocation": "./.yarn/unplugged/puppeteer-npm-13.5.2-b5c27dde9c/node_modules/puppeteer/",\
           "packageDependencies": [\
-            ["puppeteer", "npm:13.5.1"],\
+            ["puppeteer", "npm:13.5.2"],\
             ["cross-fetch", "npm:3.1.5"],\
-            ["debug", "virtual:c2bff3e67180802999655a22d390062982690e911b9d9225c258f3b25e7409f3867b2682c16232b77415f560a09d05a95042dc512a5b8c566c42bbbed88b0bbc#npm:4.3.3"],\
+            ["debug", "virtual:428f325a939c2653ad822eb3d75efb02ac311523dd0d4f9645afc39ea00bd86eceac35a9d59c9b6977d76b670a4ef0ae057ea572338a44729aa592711a8c05a3#npm:4.3.4"],\
             ["devtools-protocol", "npm:0.0.969999"],\
             ["extract-zip", "npm:2.0.1"],\
             ["https-proxy-agent", "npm:5.0.0"],\
