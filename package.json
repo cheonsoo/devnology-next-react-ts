@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "cross-env NODE_ENV=development next -p 3000",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -23,6 +23,7 @@
     "babel-preset-next": "^1.4.0",
     "buffer": "^6.0.3",
     "cheerio": "^1.0.0-rc.10",
+    "cross-env": "^7.0.3",
     "crypto": "^1.0.1",
     "fs": "^0.0.1-security",
     "jsonfile": "^6.1.0",

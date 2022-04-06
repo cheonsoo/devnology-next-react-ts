@@ -51,6 +51,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["babel-preset-next", "npm:1.4.0"],\
             ["buffer", "npm:6.0.3"],\
             ["cheerio", "npm:1.0.0-rc.10"],\
+            ["cross-env", "npm:7.0.3"],\
             ["crypto", "npm:1.0.1"],\
             ["eslint", "npm:8.12.0"],\
             ["eslint-config-airbnb", "virtual:adda991b8b33866d32b99ef37f17ebd83471a574cd0fd955565ea858d80760e34e0df83199aca4c8ccffdad9333d70070c697db40c9ff8fdb02b4d10c638e03a#npm:19.0.4"],\
@@ -5040,6 +5041,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["cross-env", [\
+        ["npm:7.0.3", {\
+          "packageLocation": "./.yarn/cache/cross-env-npm-7.0.3-96d81820f4-26f2f3ea2a.zip/node_modules/cross-env/",\
+          "packageDependencies": [\
+            ["cross-env", "npm:7.0.3"],\
+            ["cross-spawn", "npm:7.0.3"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["cross-fetch", [\
         ["npm:3.1.5", {\
           "packageLocation": "./.yarn/cache/cross-fetch-npm-3.1.5-e414995db9-f6b8c6ee3e.zip/node_modules/cross-fetch/",\
@@ -5367,6 +5378,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["babel-preset-next", "npm:1.4.0"],\
             ["buffer", "npm:6.0.3"],\
             ["cheerio", "npm:1.0.0-rc.10"],\
+            ["cross-env", "npm:7.0.3"],\
             ["crypto", "npm:1.0.1"],\
             ["eslint", "npm:8.12.0"],\
             ["eslint-config-airbnb", "virtual:adda991b8b33866d32b99ef37f17ebd83471a574cd0fd955565ea858d80760e34e0df83199aca4c8ccffdad9333d70070c697db40c9ff8fdb02b4d10c638e03a#npm:19.0.4"],\

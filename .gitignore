@@ -37,6 +37,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 *.bak
+.env
+.env.*
 
 # Yarn Berry
 # Zero-Install을 사용하겠다면?

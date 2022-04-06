@@ -97,7 +97,8 @@ const Posts: NextPage = () => {
   }
 
   const getBunjangList = async (keyword: string) => {
-    const url = `http://localhost:3000/api/scrapers/products/bunjang?keyword=${keyword}`;
+    const url = `/api/scrapers/products/bunjang?keyword=${keyword}`;
+    // const url = `http://localhost:3000/api/scrapers/products/bunjang?keyword=${keyword}`;
     const res = await axios({
       method: 'GET',
       url
@@ -106,7 +107,7 @@ const Posts: NextPage = () => {
   };
 
   const getNaverCafeList = async (keyword: string) => {
-    const url = `http://localhost:3000/api/scrapers/products/navercafe?keyword=${keyword}`;
+    const url = `/api/scrapers/products/navercafe?keyword=${keyword}`;
     const res = await axios({
       method: 'GET',
       url
@@ -115,7 +116,7 @@ const Posts: NextPage = () => {
   };
 
   const getDaangnList = async (keyword: string) => {
-    const url = `http://localhost:3000/api/scrapers/products/daangn?keyword=${keyword}`;
+    const url = `/api/scrapers/products/daangn?keyword=${keyword}`;
     const res = await axios({
       method: 'GET',
       url

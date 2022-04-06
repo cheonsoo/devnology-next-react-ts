@@ -18,8 +18,15 @@ const nextConfig = {
     };
 
     return config;
-  }
-  ,
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'https://test.devnology.co.kr/:path*',
+      }
+    ];
+  },
   images: {
     domains: [
       'cafeptthumb-phinf.pstatic.net',
