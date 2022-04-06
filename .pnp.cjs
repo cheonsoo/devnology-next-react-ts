@@ -4666,17 +4666,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["caniuse-lite", [\
-        ["npm:1.0.30001314", {\
-          "packageLocation": "./.yarn/cache/caniuse-lite-npm-1.0.30001314-6b5b2a1785-d82e1b8b28.zip/node_modules/caniuse-lite/",\
-          "packageDependencies": [\
-            ["caniuse-lite", "npm:1.0.30001314"]\
-          ],\
-          "linkType": "HARD"\
-        }],\
         ["npm:1.0.30001317", {\
           "packageLocation": "./.yarn/cache/caniuse-lite-npm-1.0.30001317-920e15d04d-0a5fc7fb8c.zip/node_modules/caniuse-lite/",\
           "packageDependencies": [\
             ["caniuse-lite", "npm:1.0.30001317"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:1.0.30001325", {\
+          "packageLocation": "./.yarn/cache/caniuse-lite-npm-1.0.30001325-39ce9bf330-383a86a513.zip/node_modules/caniuse-lite/",\
+          "packageDependencies": [\
+            ["caniuse-lite", "npm:1.0.30001325"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -8860,10 +8860,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["nanoid", [\
-        ["npm:3.3.1", {\
-          "packageLocation": "./.yarn/cache/nanoid-npm-3.3.1-bdd760bee0-4ef0969e1b.zip/node_modules/nanoid/",\
+        ["npm:3.3.2", {\
+          "packageLocation": "./.yarn/cache/nanoid-npm-3.3.2-8c41a1931d-376717f068.zip/node_modules/nanoid/",\
           "packageDependencies": [\
-            ["nanoid", "npm:3.3.1"]\
+            ["nanoid", "npm:3.3.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -8924,7 +8924,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react", "npm:17.0.43"],\
             ["@types/react-dom", null],\
             ["@types/sass", null],\
-            ["caniuse-lite", "npm:1.0.30001314"],\
+            ["caniuse-lite", "npm:1.0.30001325"],\
             ["fibers", null],\
             ["node-sass", "npm:7.0.1"],\
             ["postcss", "npm:8.4.5"],\
@@ -9501,7 +9501,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/postcss-npm-8.4.5-675038f8bb-b78abdd89c.zip/node_modules/postcss/",\
           "packageDependencies": [\
             ["postcss", "npm:8.4.5"],\
-            ["nanoid", "npm:3.3.1"],\
+            ["nanoid", "npm:3.3.2"],\
             ["picocolors", "npm:1.0.0"],\
             ["source-map-js", "npm:1.0.2"]\
           ],\
