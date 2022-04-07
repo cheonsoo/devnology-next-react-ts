@@ -6,7 +6,11 @@ import withLayout from '@/components/layouts';
 import styles from '@/styles/About.module.scss';
 
 const About: React.FC = () => {
-  return (<div className={styles.about_container}><MarkdownContainer content={content} /></div>);
+  return (
+    <div className={styles.about_container}>
+      <MarkdownContainer content={content} />
+    </div>
+  );
 };
 
 export default withLayout(About);
