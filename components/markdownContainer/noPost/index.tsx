@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const MarkdownInnerDiv = styled.div`
-  width: 900px
+  width: 900px;
 `;
 
 const NoMarkdownContentDiv = styled.div`
@@ -16,7 +16,7 @@ const NoMarkdownContentDiv = styled.div`
 `;
 
 function NoPost(props: any) {
-  return <NoMarkdownContentDiv>{props.content || 'No Post Yet'}</NoMarkdownContentDiv>
+  return <NoMarkdownContentDiv>{props.content || 'No Post Yet'}</NoMarkdownContentDiv>;
 }
 
 export default NoPost;

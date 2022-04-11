@@ -1,9 +1,38 @@
+@font-face {
+  font-family: 'ONE_Mobile_POP_OTF';
+  src: url('../pages/public/assets/fonts/ONE_Mobile_POP_OTF.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'ONE_Mobile_POP';
+  src: url('../pages/public/assets/fonts/ONE_Mobile_POP.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'tway_fly';
+  src: url('../pages/public/assets/fonts/tway_fly.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Cafe24SsurroundAir';
+  src: url('../pages/public/assets/fonts/Cafe24SsurroundAir.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'ONE_Mobile_Regular';
+  src: url('../pages/public/assets/fonts/ONE_Mobile_Regular.ttf') format('truetype');
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif !important;
+  /* font-family: 'ONE_Mobile_POP_OTF' !important; */
+  /* font-family: 'ONE_Mobile_POP' !important; */
+  /* font-family: 'ONE_Mobile_Regular' !important; */
+  /* font-family: 'tway_fly' !important; */
+  /* font-family: 'Cafe24SsurroundAir' !important; */
 }
 
 a {
@@ -13,4 +42,49 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.markdown-table {
+  border: 1px solid #eeeeee;
+  border-radius: 4px;
+  padding: 5px;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+/* .markdown-table thead {
+  border: 3px solid RGBA(1, 152, 122, 1.00);
+  border-bottom: 3px solid RGBA(1, 152, 122, 1.00);
+} */
+.markdown-table thead tr th {
+  background-color: RGBA(1, 152, 122, 1.00);
+  color: #fff;
+}
+.markdown-table thead tr th:first-child {
+  border-radius: 15px 0 0 0;
+}
+.markdown-table thead tr th:last-child {
+  border-radius: 0 15px 0 0;
+}
+.markdown-table thead tr th,
+.markdown-table tbody tr td {
+  padding: 10px 15px;
+}
+.markdown-table tbody tr {
+  border-bottom: 2px solid RGBA(226, 226, 226, 1.00);
+}
+.markdown-table tbody tr:nth-child(2n) td {
+  /* color: red; */
+  /* color: RGBA(77, 78, 74, 1.00); */
+  color: RGBA(19, 147, 122, 1.00);
+  font-weight: 700;
+}
+.markdown-table tbody tr:nth-child(2n) {
+  background-color: RGBA(243, 243, 243, 1.00);
+}
+.markdown-table tbody tr:last-child {
+  border-bottom: 3px solid RGBA(1, 152, 122, 1.00);
+}
+.markdown-table tbody tr:hover {
+  background-color: RGBA(1, 152, 122, 0.2);
+  cursor: pointer;
 }

@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'ONE_Mobile_POP_OTF';
+  src: url('../public/assets/fonts/ONE_Mobile_POP_OTF.otf') format('trueformat');
+}
+
+@font-face {
+  font-family: 'ONE_Mobile_POP';
+  src: url('../public/assets/fonts/ONE_Mobile_POP.ttf') format('trueformat');
+}
+
+@font-face {
+  font-family: 'tway_fly';
+  src: url('tway_fly.ttf') format('trueformat');
+}
+
+@font-face {
+  font-family: 'Cafe24SsurroundAir';
+  src: url('Cafe24SsurroundAir.ttf') format('trueformat');
+  /* src: url('../public/assets/fonts/Cafe24SsurroundAir.ttf') format('trueformat'); */
+}
