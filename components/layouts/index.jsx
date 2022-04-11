@@ -7,7 +7,7 @@ import Footer from './footer';
 
 import styles from '@/styles/Layout.module.scss';
 
-const withLayout = Page => {
+const withLayout = (Page) => {
   return function Layout() {
     return (
       <div className={styles.main_container}>
@@ -15,14 +15,16 @@ const withLayout = Page => {
         <SubHeader />
         <ScrollMeter height={10} top={50} duration={10} />
 
-        <div className='contents_container'>
-          <Page />
+        <div className="contents_container">
+          <div className="contents_container_inner">
+            <Page />
+          </div>
         </div>
 
         <Footer />
       </div>
     );
-  }
+  };
 };
 
 export default withLayout;

@@ -94,5 +94,12 @@
 
   :global .contents_container {
     width: 100%;
+    display: flex;
+    justify-content: center;
+
+    :global .contents_container_inner {
+      width: 100%;
+      max-width: 1200px;
+    }
   }
 }

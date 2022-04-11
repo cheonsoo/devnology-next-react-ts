@@ -2,7 +2,7 @@
 &nbsp;&nbsp;&nbsp;
 
 두 배열의 차이점을 시각화한 그래프 라이브러리를 찾아보는데 딱 맞는게 없네...  
-Canvas 로 한번 그려볼까?
+> Canvas 로 한번 그려볼까?
 
 ### Sample UI  
 ![alt=sample;width=700px](/posts/visualizedArrayCompare/visualizedArrayCompare_1.png)  
@@ -12,7 +12,8 @@ Canvas 로 한번 그려볼까?
 ---
 &nbsp;&nbsp;  
 
-### Implementation  
+> Implementation  
+
 사실 구현자체는 간단하다. 이 그래프는 크게 세가지 부분으로 나눌 수 있는데,
 * 모듈(사각형 영역, 배열의 한 값을 표시)
 * 이동 내역 검출
@@ -49,9 +50,11 @@ cp2 = { x: (to.x + from.x) / 2, y: to.y } // 175, 300
 &nbsp;
 
 &nbsp;
-|![width=300px;height=400px](/posts/visualizedArrayCompare/visualizedArrayCompare_2.png)|![width=300px;height=400px](/posts/visualizedArrayCompare/visualizedArrayCompare_3.png)|
-|:---:|:---:|
+
 |**[각도 수정 전]**|**[각도 수정 후]**|
+|:---:|:---:|
+|![width=300px;height=400px](/posts/visualizedArrayCompare/visualizedArrayCompare_2.png)|![width=300px;height=400px](/posts/visualizedArrayCompare/visualizedArrayCompare_3.png)|
+
 &nbsp;
 
 
@@ -113,7 +116,8 @@ ctx.stroke();
 
 [Git](https://github.com/cheonsoo/visualized-array-compare)  
 
-### Usage
+> Usage  
+
 * Installation
 ```
 # npm i visualized-array-compare
@@ -283,7 +287,7 @@ export default VisualizedArrayCompare;
 ```
 
 ---
-### 마치며...  
+> 마치며...  
 
 역시 포스트 작성은 어려운 일이다...  
 전체 소스에 대한 리뷰를 작성하고 싶었지만 Bezier 곡선의 초안만으로 진이 다 빠져버렸다...  
