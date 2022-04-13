@@ -46,6 +46,7 @@ const AllMarkets = () => {
   const [data, setData] = useState<Object[]>([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [excluded, setExcluded] = useState([]);
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
@@ -75,6 +76,11 @@ const AllMarkets = () => {
     setKeyword(evt.currentTarget.value);
   };
 
+  const handleChangeExcluded = (evt: any) => {
+    const words = evt.currentTarget.value;
+    setExcluded(words.split(',').map((word: string) => word.trim()));
+  };
+
   const handleSearch = async () => {
     console.log(`keyword: ${keyword}`);
     setPage(0);
@@ -87,8 +93,11 @@ const AllMarkets = () => {
     const list3 = await getDaangnList(keyword);
     console.log('### 당근마켓', list3);
 
-    const allList = list1.concat(list2).concat(list3);
-    setData(allList.sort((a: any, b: any) => new Date(b.update_date).getTime() - new Date(a.update_date).getTime()));
+    let allList = list1.concat(list2).concat(list3);
+    allList = allList
+      .filter((item: any) => excluded.filter((word: string) => item.title.includes(word)).length === 0)
+      .sort((a: any, b: any) => new Date(b.update_date).getTime() - new Date(a.update_date).getTime());
+    setData(allList);
   };
 
   const handleInfiniteScroll = () => {
@@ -135,14 +144,19 @@ const AllMarkets = () => {
   return (
     <div className={styles.all_markets_container}>
       <div style={{ display: 'flex' }}>
-        <div style={{ marginRight: '10px' }}>
-          <TextField
-            id="outlined-basic"
-            label="Outlined"
-            variant="outlined"
-            onKeyUp={handleKeyUp}
-            onChange={handleChange}
-          />
+        <div style={{ display: 'flex', marginRight: '10px' }}>
+          <div style={{ marginRight: '15px' }}>
+            <TextField
+              id="outlined-basic"
+              label="검색"
+              variant="outlined"
+              onKeyUp={handleKeyUp}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <TextField id="outlined-basic" label="제외" variant="outlined" onChange={handleChangeExcluded} />
+          </div>
         </div>
         <div>
           <Button variant="contained" style={{ height: '55px' }} onClick={handleSearch}>
