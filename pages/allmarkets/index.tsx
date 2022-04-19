@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import type { NextPage } from 'next';
 import Image from 'next/image';
@@ -46,7 +46,9 @@ const AllMarkets = () => {
   const [data, setData] = useState<Object[]>([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const [excluded, setExcluded] = useState([]);
+  const [excluded, setExcluded] = useState(['매입', '삽니다']);
+
+  const excludedInputRef = useRef<any>();
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
@@ -60,11 +62,10 @@ const AllMarkets = () => {
   }, []);
 
   useEffect(() => {
-    console.log(`### data`, data);
+    if (excludedInputRef && excludedInputRef.current) excludedInputRef.current.value = excluded.join(',');
   }, [data]);
 
   const handleClickLink = (item: any) => {
-    console.log('clicked!!!');
     window.open(item.link, '_blank');
   };
 
@@ -155,7 +156,14 @@ const AllMarkets = () => {
             />
           </div>
           <div>
-            <TextField id="outlined-basic" label="제외" variant="outlined" onChange={handleChangeExcluded} />
+            <TextField
+              inputRef={excludedInputRef}
+              id="outlined-basic"
+              label="제외"
+              variant="outlined"
+              onKeyUp={handleKeyUp}
+              onChange={handleChangeExcluded}
+            />
           </div>
         </div>
         <div>
