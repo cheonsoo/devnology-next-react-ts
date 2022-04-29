@@ -45,7 +45,7 @@ const posts: ObjType = {
     publish: true,
     path: '@/static/posts/varcal/varcal.md',
     title: 'VarCal - Calculator with variables',
-    desc: '숫자 및 산술연식을 변수에 대입하여 계산하는 계산기. React Native 로 만들고 Expo 로 배포하기.',
+    desc: '숫자 및 산술연식을 변수에 대입하여 계산하는 계산기. 모바일 어플리케이션을 React Native 로 만들고 Expo 로 배포하기.',
   },
   authentication: {
     publish: false,
@@ -65,13 +65,13 @@ const posts: ObjType = {
   myself: {
     publish: false,
     path: '@/static/posts/myself/myself.md',
-    title: '나는 좋은 개발자였을까? (feat. 젊은 개발자들에게)',
-    desc: `좋은 개발자란 월급받고 일하는 한, 은퇴할 때까지 역량개발을 해야하는 숙명을 받아들이고 억지로던 자발적으로던 꾸준히 이어갈 수 있는 사람이라고 생각한다.`,
+    title: '나는 좋은 개발자일까?',
+    desc: '좋은 개발자를 평가하는 기준은 뭘까?',
   },
   awssetup: {
     publish: true,
     path: '@/static/posts/awssetup/awssetup.md',
-    title: 'NextJ + ReactJS 블로그 운영을 위한 AWS EC2 셋업',
+    title: '블로그 운영을 위한 AWS EC2 셋업 (NextJ + ReactJS)',
     desc: `저렴한 블로그 운영을 위한 AWS EC2 세팅`,
   },
   reactmarkdown: {

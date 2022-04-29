@@ -12,5 +12,6 @@ ReactNative 로 간단한 Hybrid App 를 만들고 Expo 로 실제로 AppStore �
 이럴 때 개인 경비가 발생하였으니 돈주세요~ 할때... ㅎㅎㅎ
 
 
-| ![Image](/posts/varcal/varcal_image_1.jpeg)  **[개인지출이 발생하여 공동계좌에서 입금요청]**   | ![Image](/posts/varcal/varcal_image_2.jpeg)  **[혹은 여행경비 N빵]**   |
-| - | - |
+|**[개인지출이 발생하여 공동계좌에서 입금요청]**|**[혹은 여행경비 N빵]**|
+|:---:|:---:|
+| ![width=400px](/posts/varcal/varcal_image_1.jpeg) | ![width=400px](/posts/varcal/varcal_image_2.jpeg) |

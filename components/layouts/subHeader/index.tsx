@@ -7,10 +7,10 @@ const menus = [
   { path: '/posts', label: 'posts |' },
   { path: '/experiments', label: 'experiments |' },
   { path: '/allmarkets', label: '장터검색 |' },
-  { path: '/about', label: 'about' }
+  { path: '/about', label: 'about' },
 ];
 
-const SubHeader:React.FC = () => {
+const SubHeader: React.FC = () => {
   const router = useRouter();
 
   const handleClick = (path: string) => {

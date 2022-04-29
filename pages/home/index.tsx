@@ -30,9 +30,10 @@ const Home: React.FC = () => {
       const valueForFooter = 3.5 - valueForHeader > 1 ? 3.5 - valueForHeader : 1;
 
       if (imageRef1.current) {
-        const line = imageRef1.current.querySelector('div');
         if (img1) img1.style.transform = `scale(${valueForHeader})`;
-        if (line) line.style.transform = `scale(${valueForHeader})`;
+        // const line = imageRef1.current.querySelector('#header-text');
+        // if (line) line.style.transform = `scale(${valueForHeader})`;
+        // if (line) line.style.fontSize = 50 + valueForHeader + 'px';
       }
 
       if (imageRef2.current) {
@@ -59,7 +60,9 @@ const Home: React.FC = () => {
     <div className={styles.home_container}>
       <div className="banner_img" ref={imageRef1}>
         <Image alt="test" layout="responsive" src={Image1} />
-        <div className={styles.header_text}>DEVNOLOGY</div>
+        <div id="header-text" className={styles.header_text}>
+          DEVNOLOGY
+        </div>
       </div>
 
       <div className="text">얕은 지식 집합소</div>

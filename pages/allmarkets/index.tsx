@@ -45,7 +45,7 @@ const AllMarkets = () => {
   const [keyword, setKeyword] = useState('');
   const [data, setData] = useState<Object[]>([]);
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [rowsPerPage, setRowsPerPage] = React.useState(25);
   const [excluded, setExcluded] = useState(['매입', '삽니다']);
 
   const excludedInputRef = useRef<any>();
@@ -83,16 +83,15 @@ const AllMarkets = () => {
   };
 
   const handleSearch = async () => {
-    console.log(`keyword: ${keyword}`);
     setPage(0);
     setData([]);
 
     const list1 = await getNaverCafeList(keyword);
-    console.log('### 중고나라: ', list1);
+    // console.log('### 중고나라: ', list1);
     const list2 = await getBunjangList(keyword);
-    console.log('### 번개장터', list2);
+    // console.log('### 번개장터', list2);
     const list3 = await getDaangnList(keyword);
-    console.log('### 당근마켓', list3);
+    // console.log('### 당근마켓', list3);
 
     let allList = list1.concat(list2).concat(list3);
     allList = allList

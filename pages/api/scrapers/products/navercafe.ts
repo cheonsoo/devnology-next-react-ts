@@ -11,11 +11,11 @@ export default async function handler(req: any, res: any) {
     url,
     params: {
       query: encodeURI(keyword),
-      page: 1,
+      page: 0,
       size: 20,
       recommendKeyword: true,
-      searchOrderParamType: 'DEFAULT'
-    }
+      searchOrderParamType: 'DEFAULT',
+    },
   });
   const list = result.data.result.tradeArticleList;
   const data: IProduct[] = [];
@@ -31,14 +31,14 @@ export default async function handler(req: any, res: any) {
       update_date: moment(item.writeTime).format('YYYY-MM-DD HH:MM'),
       price: item.productSale.cost,
       market: item.cafeName,
-      link: `https://cafe.naver.com/${item.cafeUrl}/${item.articleId}`
-    }
+      link: `https://cafe.naver.com/${item.cafeUrl}/${item.articleId}`,
+    };
     data.push(model);
   });
 
   res.status(200).json({
     message: 'success',
-    data: data
+    data: data,
   });
 }
 
@@ -47,7 +47,7 @@ function getLocation(regionList: any) {
   try {
     regionList.forEach((item: any) => {
       location += item[Object.keys(item).pop()];
-    })
+    });
   } catch (e) {
     console.log(e);
   }
