@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
-import VisualizedArrayCompare from '@/components/visualizedArrayCompare';
-
 import withLayout from '@/components/layouts';
 
 import { experiments } from '@/constants';
@@ -20,21 +18,19 @@ const Experiment: React.FC = () => {
       setType(experiment.type);
       setPath(experiment.path);
     }
-  }, []);
+  });
 
-  function getComponent() {
-    const comp = VisualizedArrayCompare;
-    return React.createElement(comp, {});
-  };
+  function getIFrame() {
+    if (type.toLowerCase() === 's3') {
+      return <iframe width="100%" height="100%" src={path}></iframe>;
+    } else if (type.toLowerCase() === 'local') {
+      return <iframe width="100%" height="100%" src={path}></iframe>;
+    } else if (type.toLowerCase() === 'component') {
+      // TODO
+    }
+  }
 
-  return (
-    <div style={{ width: '100%', height: '1000px' }}>
-      {type === 'component' ?
-        (<>{getComponent()}</>) :
-        <iframe width="100%" height="100%" src={`/experiments/${id}/index.html`}></iframe>
-      }
-    </div>
-  );
+  return <div style={{ width: '100%', height: '1000px' }}>{getIFrame()}</div>;
 };
 
 export default withLayout(Experiment);
