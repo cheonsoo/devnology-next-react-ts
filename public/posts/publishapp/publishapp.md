@@ -1,5 +1,8 @@
+# Expo X ReactNative App 제작 및 배포 #1 - Expo 프로젝트 생성
+
+
 예전에 expo 로 app 을 만들어본적이 있다. 이번에도 단순한 웹앱을 WebView 에 넣고 App 으로 제작하고 싶어
-Expo 를 다시 꺼내들었는데 돌아버리는줄 알았다.
+Expo 를 다시 꺼내들었는데 돌아버리는줄 알았다.  
 잘 돌아가던 App 이 빌드에서 막히질 않나... 하나 고치면 에러가 하나 터지고, 도저히 하다하다 안되서
 Expo Init 으로 스켈레톤 Package 를 빌드하려고 해도 에러가 발생하는 정도여서 너무 스트레스를 받았다.
 
@@ -8,17 +11,22 @@ Expo Init 으로 스켈레톤 Package 를 빌드하려고 해도 에러가 발�
 쉽게 RN App 을 만들수있게 해주고 빌드에서의 편의성은 나처럼 간단한 하이브리드앱 제작자에게는 너무 고마운 것이지만서도
 아쉬운점이 있긴 하다.
 
-나중에 또 만들어보려고 하면 또 이러겠지?
 
+## Expo 설정
 
-* Expo Version
+Expo 나 RN 의 버전이 예전버전이라 전부 새로 설치하기로 했다.  
+(사실 그냥 예전버전으로 해보려다 에러가 자꾸 발생해서 처음부터 다시 하는거임...)  
+
+* Expo 설치
 ```
-expo --version
+# npm install -g expo-cli
+# expo --version
 5.4.3
 ```
 
-
 * App.json 설정
+예전에 성공한 설정을 가져왔다.
+
 ```
 {
   "expo": {
@@ -60,19 +68,61 @@ expo --version
 }
 
 }
-
 ```
 
-* IOS 용 App Build
+* Expo 프로젝트 초기화
 ```
-expo build:ios
+# expo init myapp
+```
+![width=500px](/posts/publishapp/publishapp1.png)
+
+아래와 같이 프로젝트가 초기화 되었다.
+
+![width=500px](/posts/publishapp/publishapp2.png)
+
+# WebView 에 외부 HTML embed 하기
+간단한 웹뷰 제작이 목표이다.  
+미리 제작한 html 을 embed 하여 배포까지 가보자!  
+components 폴더에 에 WebView component 를 만들어주고 App.js 에 import 해주자.  
+```
+# npm i react-native-webview
+```
+
+* /components/WebView.jsx
+```
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import { WebView } from 'react-native-webview';
+
+const WebView = () => {
+  const uri = 'http://someurl.com/index.html';
+
+  return (<View style={styles.container}>
+    <WebView source={{ uri: uri }} style={styles.webview} />
+  </View>);
+};
+
+const styles = StyleSheet.create({
+  container: {
+    width: '100%',
+    height: '100%'
+  },
+  webview: {}
+});
+
+export default AstarSimulator;
+```
+
+이러면 얼추 완성.  
+
+## Expo IOS App Build
+```
+# expo build:ios
 ```
 
 * App Icon 제작하기
 여기에 너무 자세히 나와있다.
 [Figma 로 App 아이콘 제작](https://taehoon95.tistory.com/118)
-
-
 
 * IOS Build 결과
 빌드를 시작하면 Expo 서버 큐에 대기하게 된다. 일단 큐에 들어가면 프로세스를 종료해도 된다.
@@ -80,8 +130,7 @@ expo build:ios
 돌려놓고 자다 일어나면 다 되있겠지.
 
 ```
-expo build:ios
-
+# expo build:ios
 expo build:ios has been superseded by eas build. Learn more.
 
 Run the following:
@@ -175,10 +224,7 @@ You can press Ctrl+C to exit. It won't cancel the build, you'll be able to monit
 ⠏ Build queued...^C
 ```
 
-
-
-
-* Trouble Shooting
+## Trouble Shooting
 
 expo-cli 글로벌 최신버전으로 업데이트
 ```
@@ -190,3 +236,14 @@ app.json 에서 owner 필드 제거
 ```
 You are not authorized to build @cheonsoo/astar-simulator. The account name provided under owner may be incorrect or invalid.
 ```
+
+## 마치며
+이렇게 Expo 와 ReactNative 로 간단한 웹앱을 만들어보았다.  
+WebView 에 내부 정적 파일들을 불러올 수도 있지만 그렇게 되면 웹영역이 수정될 때마다 앱배포를 다시 해줘야 하기 때문에  
+마침 S3 를 따로 운영하고 있기도 하기 때문에 외부에서 가져오도록 했다.  
+
+Expo 는 초심자에게 아주 편리한 초기 설정과 디버깅 툴을 제공해주기 때문에 처음 접하는 사람들에게는 강추해볼만하다.  
+하지만 Native 영역 제어에 한계가 있고 빌드시간이 오래걸린다는 점, 그리고 트러블 슈팅에 애 먹은 점들은 (레퍼런스가 좀 적은 느낌이다) 다음엔 expo 없이 React Native 만으로도 App 을 제작해보아야 겠다는 생각이 들게했다.  
+물론 간단한 웹앱 제작에는 이만한 툴이 없는 것 같기도 하다.  
+
+다음으로는 이렇게 빌드된 App 을 실제로 AppStore 에 Publish 를 해보도록 하자.  

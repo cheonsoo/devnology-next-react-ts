@@ -82,9 +82,15 @@ const posts: ObjType = {
   },
   publishapp: {
     publish: true,
-    path: '@/static/posts/reactmarkdown/reactmarkdown',
-    title: 'Expo 로 App Publish 하기',
-    desc: `Expo 로 App Publish 하기`,
+    path: '@/static/posts/publishapp/publishapp.md',
+    title: 'Expo X ReactNative App 제작 및 배포 #1',
+    desc: `Expo 로 App 제작 및 빌드`,
+  },
+  publishapp2: {
+    publish: true,
+    path: '@/static/posts/publishapp2/publishapp2.md',
+    title: 'Expo X ReactNative App 제작 및 배포 #2',
+    desc: `AppStore 에 App 을 실제로 Publish 해보자`,
   },
   yarnberry: {
     publish: true,
