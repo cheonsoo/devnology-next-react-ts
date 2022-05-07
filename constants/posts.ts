@@ -31,7 +31,7 @@ const posts: ObjType = {
   },
   astar: {
     publish: true,
-    path: '@/static/posts/astar/astar.md',
+    path: '@/public/posts/astar/astar.md',
     title: 'A* path finding algorithm',
     desc: 'Java Script 로 구현한 A* 최단거리 알고리즘',
   },
@@ -80,6 +80,18 @@ const posts: ObjType = {
     title: 'React Markdown 문법',
     desc: `React Markdown 문법 정리 및 예제`,
   },
+  publishapp: {
+    publish: true,
+    path: '@/static/posts/reactmarkdown/reactmarkdown',
+    title: 'Expo 로 App Publish 하기',
+    desc: `Expo 로 App Publish 하기`,
+  },
+  yarnberry: {
+    publish: true,
+    path: '@/static/posts/yarnberry/yarnberry',
+    title: 'yarn berry 적용해보기',
+    desc: `npm 만 10년썼는데 yarn 으로 넘어가야 하나?`,
+  }
 };
 
 export default posts;

@@ -19,8 +19,10 @@ import styles from '@/styles/Posts.module.scss';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
+    backgroundColor: '#3E957B',
+    color: '#fff',
+    fontWeight: '900',
+    borderRadius: '8px 8px 0 0'
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 14,

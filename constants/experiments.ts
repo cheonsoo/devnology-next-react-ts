@@ -40,6 +40,13 @@ const experiments: ObjType = {
     title: 'Visualize changed between two arrays',
     desc: '두 개의 배열에서 변경된 내역을 canvas 로 직접 그려보자',
   },
+  canvaseditor: {
+    publish: true,
+    path: 'http://static.devnology.co.kr/apps/canvas-editor/index.html',
+    type: 's3',
+    title: '동영상에서 추출한 이미지를 간단히 수정할 수 있는 웹 에디터',
+    desc: '동영상에서 이미지를 추출하여 테스트 및 도형을 머지하는 간단 웹 에디터',
+  }
 };
 
 export default experiments;

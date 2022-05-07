@@ -23,8 +23,9 @@ let timer: any;
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     // backgroundColor: theme.palette.common.black,
-    backgroundColor: '#55aacc',
+    backgroundColor: '#3E957B',
     color: theme.palette.common.white,
+    fontWeight: '900'
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 14,

@@ -5,6 +5,7 @@ import MarkdownContainer from '@/components/markdownContainer'
 import withLayout from '@/components/layouts';
 
 import styles from '@/styles/Posts.module.scss';
+import { posts } from '@/constants';
 
 const Post: React.FC = () => {
   const [content, setContent] = useState('');
@@ -13,8 +14,9 @@ const Post: React.FC = () => {
   const { id } = router.query;
 
   useEffect(() => {
-    console.log(`### post id: ${id}`);
     if (id) {
+      console.log(`### post id: ${id}`);
+      // const post = posts[id];
       const markdown = require(`@/public/posts/${id}/${id}.md`);
       setContent(markdown.default);
     }

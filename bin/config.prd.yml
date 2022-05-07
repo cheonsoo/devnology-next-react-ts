@@ -1,0 +1,9 @@
+env: dev
+app:
+  name: devnology-next-react-ts
+  root: /Users/mansoo/Workspace/mansoo/devnology-next-react-ts
+  source: public/posts
+s3:
+  bucket:
+    static: s3://static.devnology.co.kr
+    path: posts
