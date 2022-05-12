@@ -2,18 +2,12 @@
 
 &nbsp;
 
-## What does WebApis do?
-* DOM
-* Ajax
-* timeout
-* other things
-
-
-## Event Loop
-
+## JavaScript as a Single Threaded Language
 JavaScript 는 Single Thread 언어이다라고 많이들 말합니다. 이건 사실입니다.  
-JavaScript 는 실제로 한번에 한개의 프로세스만 처리할 수 있습니다. 
-Ajax 호출을 보내고 브라우저를 렌더링하며 어떤 응답이 오기전에 일련의 비즈니스 로직들을 처리할 수 있는 것 처럼 말이죠.  
+JavaScript 는 실제로 한번에 한개의 프로세스만 처리할 수 있습니다.  
+그렇다면 JavaScript 는 어떻게 Ajax 호출을 보내고 브라우저를 렌더링하며 어떤 응답이 오기전에 일련의 비즈니스 로직들을 처리할 수 있는 것 처럼 멀티쓰레드같은 동작을 할 수 있을까요?  
+
+## JS Engine, Event Loop and Call Stack
 그 이유는 런타임으로서의 브라우저는 단순히 런타임 뿐만이 아니라 다른 많은 기능들을 제공해주고 있기 때문입니다.  
 DOM Element 제어, Ajax 호출, setTimeout 이 그것인데 이것들을 통칭하여 WebAPIs 라고 합니다.  
 
@@ -25,11 +19,6 @@ DOM Element 제어, Ajax 호출, setTimeout 이 그것인데 이것들을 통칭
 
 **[[출처 - Rod Machen - JS 런타임(브라우저)의 구조](https://codenotcode.com/my-event-loop-beebef81cd46)]**
 
-* Heap - 객체 등의 데이터가 저장되는 영역
-* Stack (Call Stack)
-* Web APIs
-* Callback Queue
-* Event Loop
 
 보시다시피 JS 엔진은 하나의 콜스택만을 가지고 있습니다. 싱글 쓰레드란 소리죠.  
 콜스택은 코드가 실행되면 LIFO 의 형태로 Task 들을 처리하게 됩니다.  
@@ -37,7 +26,20 @@ DOM Element 제어, Ajax 호출, setTimeout 이 그것인데 이것들을 통칭
 
 > Event Loop 는 여기서 콜스택과 콜백큐를 끊임없이 감시하면서 콜스택이 비었을 때 콜백큐에 있는 Task 들을 콜스택으로 이동시킵니다.
 
-&nbsp;
+그런데 Call Stack 이란 용어는 어딘지 모르게 친숙하지 않나요?  
+기억이 나지 않으시더라도 사실 저희가 자주 접하고 있는 용어입니다.  
+console 에서요.  
+![width=800px](/posts/howDoesTheJsWork/maximum_call_stack.png)
+
+저희가 항상 마주하고 있던 용어입니다. 말그대로 call stack 에 너무많은 Task 가 쌓여 런타임이 자동적으로 프로세스를 종료시켜버린 겁니다.  
+런타임마다 다르지만 CallStack 에 담을 수 있는 Task 의 최대치는  
+* Chrome: 10,000
+* Node.JS: 11,000
+* Firefox: 50,994
+
+정도라고 합니다. Chrome 과 Node.JS 는 같은 엔진을 사용하니 비슷하다고 쳐도 Firefox 는 의외네요.  
+하지만 CallStack 에 5만건이상의 Task 가 쌓일 일은 없을 듯하니 크게 중요하지 않은 것 같습니다.  
+
 ## 예제를 한번 봐볼까요?
 아래의 예제는 제가 공부했던 동영상 강좌에서 가져왔습니다.  
 
@@ -63,7 +65,7 @@ DOM Element 제어, Ajax 호출, setTimeout 이 그것인데 이것들을 통칭
 * 그 다음 명령줄은 다시 console.log 이네요. log 를 찍고 console.log 가 stack 에서 빠져나오고 stack 이 클리어 되며 스크립트가 종료됩니다.  
 그런데 여기 보셨나요? setTimeout 이 webapis 에 의해 실행되고 아직 cb 이 호출되기 전인데 다음 라인인 console.log 로그가 실행되었습니다.  
 5000ms 동안 블로킹되지 않구요. 이 부분이 JavaScript 의 블록/논블로킹, Sync/Async 프로세스입니다.  
-이 부분이 JavaScript 가 멀티 쓰레드처럼 동작하는 원리입니다. 런타임의 도움을 받아 가능했었네요!  
+그리고 이 부분이 JavaScript 가 멀티 쓰레드처럼 동작하는 원리입니다. 런타임의 도움을 받아 가능했었네요!  
 ![width=800px](/posts/howDoesTheJsWork/example6.png)
 
 * 스크립트는 종료되었지만 아직 webapis 는 setTimeout 에 의해 5000ms 동안 대기를 하고 있었죠. 시간이 지나면 cb 를 CallbackQueue 에 Push 합니다.  
@@ -92,7 +94,7 @@ console.log('JSConf');
 ```
 
 정답은 그렇지 않다 입니다. 동일한 코드에 setTimeout 의 delay 만 0으로 주었죠.  
-setTimtout 이 webapis 에 의해 실행되고 cb 가 CallbackQueue 에 담기는 것까지는 동일합니다.  
+setTimeout 이 webapis 에 의해 실행되고 cb 가 CallbackQueue 에 담기는 것까지는 동일합니다.  
 그리고 Event Loop 는 CallStack 과 CallbackQueue 를 감시하고 있습니다.  
 그런데 Event Loop 가 CallbackQueue 에 담긴 Task 를 CallStack 으로 가져오는데에는 한 가지 조건이 있습니다.  
 그건 CallbackQueue 가 비어있어야 한다...  이죠.
@@ -105,6 +107,7 @@ JSConf
 there
 ```
 가 될 것 입니다.  
+
 마찬가지로 setTimeout 이후에 JS 엔진에서 실행되지만 시간이 오래걸리는 for loop 가 있다고 가정해보죠.  
 loop 의 예상시간이 대략 2000ms 라면?  
 setTimeout 의 cb 는 2000ms 뒤에 실행되게 되겠죠.  
@@ -112,7 +115,7 @@ setTimeout 의 cb 는 2000ms 뒤에 실행되게 되겠죠.
 
 > setTimtout 의 delay 는 최소보장시간 입니다.
 
-CallStack 에 담긴 Tasks 의 유무와 별개로 외부적인 요소, Network 나 CPU 의 성능, 기타 등등의 요소에 따라 cb 의 실행시간이 정해지게 된다는 겁니다.  
+CallStack 에 담긴 Tasks 의 유무와 별개로 외부적인 요소, Network 나 CPU 의 성능, 기타 등등의 요소에 따라 cb 의 호출 시기가 정해지게 된다는 겁니다.  
 더욱 사용에 조심해야 겠네요.  
 
 **[setTimeout | Web API](https://developer.mozilla.org/ko/docs/Web/API/setTimeout)**  

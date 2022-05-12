@@ -12,6 +12,8 @@ const StyledTitleContainer = styled.div`
   width: 100%;
   height: 35px;
   display: flex;
+  margin-top: 50px;
+  margin-bottom: 20px;
 `;
 
 const StyledTitleMark = styled.div`
