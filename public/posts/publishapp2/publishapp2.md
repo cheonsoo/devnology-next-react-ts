@@ -90,4 +90,16 @@ Services, TestFlight, Xcode Cloud 탭의 설정은 따로 입력할 필요는 �
 ![width=500px](/posts/publishapp2/publishapp2-16.png)
 
 
-## 완료
+## 마치며
+ㅎㅎㅎㅎㅎㅎㅎㅎㅎ  
+
+결국 마지막에 심사에서 걸렸다.  
+이유는 컨텐츠가 너무 빈약해서...  
+
+![width=500px](/posts/publishapp2/publishapp2-17.png)
+
+![width=1000px](/posts/publishapp2/publishapp2-18.png)
+
+너무 안일하게 생각했나? 그래도 WebView 하나에 html 하나있는 앱쪼가리가 통과될리가 없지...  
+이래서 앱스토어 퀄리티가 좋다 싶다~  
+여기까지 온게 아깝기도 하니깐 좀 더 컨텐츠를 보강해서 다시 심사받을 생각.  

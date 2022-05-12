@@ -97,7 +97,13 @@ const posts: ObjType = {
     path: '@/static/posts/yarnberry/yarnberry',
     title: 'yarn berry 적용해보기',
     desc: `npm 만 10년썼는데 yarn 으로 넘어가야 하나?`,
-  }
+  },
+  howDoesTheJsWork: {
+    publish: true,
+    path: '@/static/posts/howDoesTheJsWork/index.md',
+    title: 'JS 의 동작원리 - Event Loop',
+    desc: `Single Thread 인 JavaScript. 어떻게 Multi Thread 인 것 처럼 동작할까?`,
+  },
 };
 
 export default posts;

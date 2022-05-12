@@ -2,7 +2,7 @@
 &nbsp;&nbsp;&nbsp;
 
 두 배열의 차이점을 시각화한 그래프 라이브러리를 찾아보는데 딱 맞는게 없네...  
-> Canvas 로 한번 그려볼까?
+## Canvas 로 한번 그려볼까?
 
 ### Sample UI  
 ![alt=sample;width=700px](/posts/visualizedArrayCompare/visualizedArrayCompare_1.png)  
@@ -12,7 +12,7 @@
 ---
 &nbsp;&nbsp;  
 
-> Implementation  
+## Implementation  
 
 사실 구현자체는 간단하다. 이 그래프는 크게 세가지 부분으로 나눌 수 있는데,
 * 모듈(사각형 영역, 배열의 한 값을 표시)
@@ -56,6 +56,10 @@ cp2 = { x: (to.x + from.x) / 2, y: to.y } // 175, 300
 |![width=300px;height=400px](/posts/visualizedArrayCompare/visualizedArrayCompare_2.png)|![width=300px;height=400px](/posts/visualizedArrayCompare/visualizedArrayCompare_3.png)|
 
 &nbsp;
+
+이런 현상을 방지하기 위해 라인이 들어올 때의 벡터값을 구해 화살표의 각도를 조정해주었다.  
+
+[BezierCurve With Arrowhead](https://riptutorial.com/html5-canvas/example/18138/cubic---quadratic-bezier-curve-with-arrowheads)
 
 
 ```js
@@ -112,11 +116,13 @@ ctx.stroke();
 ---
 &nbsp;&nbsp;  
 
-[React 나 Vue 에서 사용가능한 NPM Module 보기](https://www.npmjs.com/package/visualized-array-compare)  
-
 [Git](https://github.com/cheonsoo/visualized-array-compare)  
 
-> Usage  
+## Npm Module 로 제작  
+
+이 그래프는 어차피 내가 쓸려고 만든거라 개발중인 프로젝트에 손쉽게 import 할 수 있도록 npm 모듈로 제작해두었다.  
+
+**>> [Npm - Visualized-array-compare](https://www.npmjs.com/package/visualized-array-compare)**
 
 * Installation
 ```
@@ -127,9 +133,6 @@ ctx.stroke();
 
 * Usage in React project  
 TypeScript 용 Definition 을 정의하지 않아 일단 ts-ignore 로 에러를 다 무시해주었다...만 권장되는 방법은 아니다...  
-시간이 될 때 TS 용 모듈로 제작할 예정...  
-과연 누가 쓸까... 란 생각이 들긴 하지만 개인적인 용도로라도 쓰면 되니깐...  
-개인 프로젝트라 대충 작성하여 코드가 엉망이긴 하지만 어떻게 쓰이는지는 이해할 수 있을듯...  
 
 ```js
 import React, { useState, useEffect, useRef } from 'react';
@@ -286,9 +289,11 @@ export default VisualizedArrayCompare;
 
 ```
 
----
-> 마치며...  
+&nbsp;
 
-역시 포스트 작성은 어려운 일이다...  
-전체 소스에 대한 리뷰를 작성하고 싶었지만 Bezier 곡선의 초안만으로 진이 다 빠져버렸다...  
-누가 보지도 않는 블로그, 일단 여기서 마무리 하고 추후에 다시 내용을 보충해야겠다...  
+## 마치며
+
+포토샵이나 키노트에서 도형을 그리면 자연스럽게 조정할 수 있는 자연스러운 곡선을 그려보았는데 앞으로 그다지 쓸일은 많이 없을 것 같다.  
+앞으로도 Canvas 로 직접 그래프를 그릴일이 있을까?  
+워낙 그래프 관련 툴이나 라이브러리들이 많이 나와있어 왠만하면 가져다 쓰지 않을까싶다.  
+그래도 알고 쓰는거랑 모르고 쓰는거랑은 다르니깐~  
