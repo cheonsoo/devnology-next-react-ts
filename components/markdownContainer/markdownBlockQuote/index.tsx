@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledBlockQuoteContainer = styled.div`
-  margin: 15px 0;
+  margin: 30px 30px;
 `;
 
 const StyledBlockQuote = styled.blockquote`

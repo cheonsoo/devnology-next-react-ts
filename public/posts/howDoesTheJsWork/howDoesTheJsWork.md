@@ -17,7 +17,7 @@ DOM Element 제어, Ajax 호출, setTimeout 이 그것인데 이것들을 통칭
 
 ![width=800px](/posts/howDoesTheJsWork/structure_of_runtime.png)
 
-**[[출처 - Rod Machen - JS 런타임(브라우저)의 구조](https://codenotcode.com/my-event-loop-beebef81cd46)]**
+[[**출처 - Rod Machen - JS 런타임(브라우저)의 구조**](https://codenotcode.com/my-event-loop-beebef81cd46)]
 
 
 보시다시피 JS 엔진은 하나의 콜스택만을 가지고 있습니다. 싱글 쓰레드란 소리죠.  
