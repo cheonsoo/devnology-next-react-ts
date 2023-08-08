@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, RefObject } from 'react';
 import Image from 'next/image';
 
 import Image1 from './night-sky-g1f3262fbb_1920.jpg';
@@ -17,7 +17,7 @@ const Home: React.FC = () => {
   }, []);
 
   const handleScrollImage = () => {
-    const img1 = imageRef1.current.querySelector('img');
+    const img1: RefObject<HTMLImageElement> = imageRef1.current.querySelector('img');
     const img2 = imageRef2.current.querySelector('img');
     const img3 = imageRef3.current.querySelector('img');
     const clientWidth = document.documentElement.clientWidth || document.body.clientWidth;

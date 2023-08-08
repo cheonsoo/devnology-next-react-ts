@@ -88,7 +88,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["stream", "npm:0.0.2"],\
             ["styled-components", "virtual:adda991b8b33866d32b99ef37f17ebd83471a574cd0fd955565ea858d80760e34e0df83199aca4c8ccffdad9333d70070c697db40c9ff8fdb02b4d10c638e03a#npm:5.3.5"],\
             ["tls", "npm:0.0.1"],\
-            ["typescript", "patch:typescript@npm%3A4.6.3#~builtin<compat/typescript>::version=4.6.3&hash=bda367"],\
+            ["typescript", "patch:typescript@npm%3A4.6.3#~builtin<compat/typescript>::version=4.6.3&hash=7ad353"],\
             ["visualized-array-compare", "npm:1.0.3"],\
             ["zlib", "npm:1.0.5"]\
           ],\
@@ -3609,7 +3609,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@typescript-eslint/typescript-estree", "virtual:e1af04b042313073b0955ddc798f9758238f62a422d0e8b830426ae4e45fe474d1550442dd9937d40e00999d9b9f6830ea25cf554f3f67647d4bfd9853b8767a#npm:5.14.0"],\
             ["debug", "virtual:c2bff3e67180802999655a22d390062982690e911b9d9225c258f3b25e7409f3867b2682c16232b77415f560a09d05a95042dc512a5b8c566c42bbbed88b0bbc#npm:4.3.3"],\
             ["eslint", "npm:8.12.0"],\
-            ["typescript", "patch:typescript@npm%3A4.6.3#~builtin<compat/typescript>::version=4.6.3&hash=bda367"]\
+            ["typescript", "patch:typescript@npm%3A4.6.3#~builtin<compat/typescript>::version=4.6.3&hash=7ad353"]\
           ],\
           "packagePeers": [\
             "@types/eslint",\
@@ -3630,7 +3630,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@typescript-eslint/typescript-estree", "virtual:a98e4b460ffcb2f967ffb47093f856be72cc3e72a15b134b087b11a17fc8bbbce5fd6e598e75994170798ad4b93fe497e2a2940cf3bae86289c1e437b4330ecf#npm:5.18.0"],\
             ["debug", "virtual:c2bff3e67180802999655a22d390062982690e911b9d9225c258f3b25e7409f3867b2682c16232b77415f560a09d05a95042dc512a5b8c566c42bbbed88b0bbc#npm:4.3.3"],\
             ["eslint", "npm:8.12.0"],\
-            ["typescript", "patch:typescript@npm%3A4.6.3#~builtin<compat/typescript>::version=4.6.3&hash=bda367"]\
+            ["typescript", "patch:typescript@npm%3A4.6.3#~builtin<compat/typescript>::version=4.6.3&hash=7ad353"]\
           ],\
           "packagePeers": [\
             "@types/eslint",\
@@ -3704,7 +3704,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["is-glob", "npm:4.0.3"],\
             ["semver", "npm:7.3.5"],\
             ["tsutils", "virtual:6231c7005533ec2049c524776140de02a45485a1253f541df8be7eeb6480a7c77f19602c92e2e4fff67017b20463dd38deddce416b479b12319a3ea141602fef#npm:3.21.0"],\
-            ["typescript", "patch:typescript@npm%3A4.6.3#~builtin<compat/typescript>::version=4.6.3&hash=bda367"]\
+            ["typescript", "patch:typescript@npm%3A4.6.3#~builtin<compat/typescript>::version=4.6.3&hash=7ad353"]\
           ],\
           "packagePeers": [\
             "@types/typescript",\
@@ -3724,7 +3724,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["is-glob", "npm:4.0.3"],\
             ["semver", "npm:7.3.5"],\
             ["tsutils", "virtual:6231c7005533ec2049c524776140de02a45485a1253f541df8be7eeb6480a7c77f19602c92e2e4fff67017b20463dd38deddce416b479b12319a3ea141602fef#npm:3.21.0"],\
-            ["typescript", "patch:typescript@npm%3A4.6.3#~builtin<compat/typescript>::version=4.6.3&hash=bda367"]\
+            ["typescript", "patch:typescript@npm%3A4.6.3#~builtin<compat/typescript>::version=4.6.3&hash=7ad353"]\
           ],\
           "packagePeers": [\
             "@types/typescript",\
@@ -5497,7 +5497,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["stream", "npm:0.0.2"],\
             ["styled-components", "virtual:adda991b8b33866d32b99ef37f17ebd83471a574cd0fd955565ea858d80760e34e0df83199aca4c8ccffdad9333d70070c697db40c9ff8fdb02b4d10c638e03a#npm:5.3.5"],\
             ["tls", "npm:0.0.1"],\
-            ["typescript", "patch:typescript@npm%3A4.6.3#~builtin<compat/typescript>::version=4.6.3&hash=bda367"],\
+            ["typescript", "patch:typescript@npm%3A4.6.3#~builtin<compat/typescript>::version=4.6.3&hash=7ad353"],\
             ["visualized-array-compare", "npm:1.0.3"],\
             ["zlib", "npm:1.0.5"]\
           ],\
@@ -5944,7 +5944,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-react", "virtual:1cc1c9c7f305a159851b2f7751c3bb30671a48662b252c8bb8c9cd7e1f294d369c7574f3b94d360135955abb42bd092cd6e4bd006d6f3ede62f4db4b4aaf373f#npm:7.29.3"],\
             ["eslint-plugin-react-hooks", "virtual:adda991b8b33866d32b99ef37f17ebd83471a574cd0fd955565ea858d80760e34e0df83199aca4c8ccffdad9333d70070c697db40c9ff8fdb02b4d10c638e03a#npm:4.3.0"],\
             ["next", "virtual:adda991b8b33866d32b99ef37f17ebd83471a574cd0fd955565ea858d80760e34e0df83199aca4c8ccffdad9333d70070c697db40c9ff8fdb02b4d10c638e03a#npm:12.1.0"],\
-            ["typescript", "patch:typescript@npm%3A4.6.3#~builtin<compat/typescript>::version=4.6.3&hash=bda367"]\
+            ["typescript", "patch:typescript@npm%3A4.6.3#~builtin<compat/typescript>::version=4.6.3&hash=7ad353"]\
           ],\
           "packagePeers": [\
             "@types/eslint",\
@@ -11287,7 +11287,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["tsutils", "virtual:6231c7005533ec2049c524776140de02a45485a1253f541df8be7eeb6480a7c77f19602c92e2e4fff67017b20463dd38deddce416b479b12319a3ea141602fef#npm:3.21.0"],\
             ["@types/typescript", null],\
             ["tslib", "npm:1.14.1"],\
-            ["typescript", "patch:typescript@npm%3A4.6.3#~builtin<compat/typescript>::version=4.6.3&hash=bda367"]\
+            ["typescript", "patch:typescript@npm%3A4.6.3#~builtin<compat/typescript>::version=4.6.3&hash=7ad353"]\
           ],\
           "packagePeers": [\
             "@types/typescript",\
@@ -11374,10 +11374,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["typescript", [\
-        ["patch:typescript@npm%3A4.6.3#~builtin<compat/typescript>::version=4.6.3&hash=bda367", {\
-          "packageLocation": "./.yarn/cache/typescript-patch-30b732d1e2-6bf45caf84.zip/node_modules/typescript/",\
+        ["patch:typescript@npm%3A4.6.3#~builtin<compat/typescript>::version=4.6.3&hash=7ad353", {\
+          "packageLocation": "./.yarn/cache/typescript-patch-572cbe385b-6bf45caf84.zip/node_modules/typescript/",\
           "packageDependencies": [\
-            ["typescript", "patch:typescript@npm%3A4.6.3#~builtin<compat/typescript>::version=4.6.3&hash=bda367"]\
+            ["typescript", "patch:typescript@npm%3A4.6.3#~builtin<compat/typescript>::version=4.6.3&hash=7ad353"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -15835,9 +15835,13 @@ function patchFs(patchedFs, fakeFs) {
     }
   }
   {
-    patchedFs.read[nodeUtils.promisify.custom] = async (p, buffer, ...args) => {
-      const res = fakeFs.readPromise(p, buffer, ...args);
+    patchedFs.read[nodeUtils.promisify.custom] = async (fd, buffer, ...args) => {
+      const res = fakeFs.readPromise(fd, buffer, ...args);
       return {bytesRead: await res, buffer};
+    };
+    patchedFs.write[nodeUtils.promisify.custom] = async (fd, buffer, ...args) => {
+      const res = fakeFs.writePromise(fd, buffer, ...args);
+      return {bytesWritten: await res, buffer};
     };
   }
 }
@@ -20294,11 +20298,11 @@ Require stack:
     }
     originalExtensionJSFunction.call(this, module, filename);
   };
-  const originalEmitWarning = process.emitWarning;
-  process.emitWarning = function(warning, name, ctor) {
-    if (name === `ExperimentalWarning` && typeof warning === `string` && warning.includes(`--experimental-loader`))
-      return;
-    originalEmitWarning.apply(process, arguments);
+  const originalEmit = process.emit;
+  process.emit = function(name, data, ...args) {
+    if (name === `warning` && typeof data === `object` && data.name === `ExperimentalWarning` && (data.message.includes(`--experimental-loader`) || data.message.includes(`Custom ESM Loaders is an experimental feature`)))
+      return false;
+    return originalEmit.apply(process, arguments);
   };
   patchFs(fs__default.default, new PosixFS(opts.fakeFs));
 }
